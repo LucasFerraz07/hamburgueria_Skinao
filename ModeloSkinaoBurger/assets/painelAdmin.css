@@ -1,0 +1,122 @@
+/* Adicione isso ao seu arquivo assets/painelAdmin.css */
+
+body {
+    background-color: #1C1C1C;
+    color: #EEEEEE;
+    font-family: Arial, sans-serif;
+}
+
+.container.box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.container-t, .container {
+    flex: 1;
+    background-color: #1C1C1C;
+    border: 2px solid #8D6E63;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #FFCA28;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    color: #EEEEEE;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border: 1px solid #8D6E63;
+    border-radius: 4px;
+    background-color: #EEEEEE;
+    color: black;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: #C62828;
+    color: #EEEEEE;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #B71C1C;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container.box {
+        flex-direction: column;
+    }
+    
+    .container-t, .container {
+        width: 100%;
+    }
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #8D6E63;
+    border-radius: 4px;
+    background-color: #EEEEEE;
+    color: #1C1C1C;
+    width: 100%;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23EEEEEE'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #1C1C1C;
+}
+
+select option {
+    background-color: #EEEEEE;
+    color: #1C1C1C;
+    padding: 10px;
+}

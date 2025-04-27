@@ -1,0 +1,85 @@
+/* Paleta: 
+   #1C1C1C (preto suave),
+   #C62828 (vermelho escuro),
+   #FFCA28 (amarelo vibrante),
+   #EEEEEE (cinza claro),
+   #8D6E63 (marrom suave)
+*/
+
+/* === RESET BÁSICO === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === HEADER (Navbar) === */
+header {
+    background-color: #1C1C1C;
+    padding: 10px 20px;
+    border-bottom: 4px solid #C62828;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nome h1 {
+    color: #FFCA28;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.logout a {
+    color: #EEEEEE;
+    background-color: #C62828;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.logout a:hover {
+    background-color: #8D6E63;
+}
+
+/* === FOOTER (Admin) === */
+.admin-footer {
+    background-color: #1C1C1C;
+    padding: 15px 0;
+    border-top: 4px solid #C62828;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-item {
+    color: #EEEEEE;
+    font-size: 22px;
+    padding: 10px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+    color: #FFCA28;
+    transform: scale(1.2);
+}
+
+/* Ícones do Font Awesome */
+.nav-item i {
+    pointer-events: none;
+}

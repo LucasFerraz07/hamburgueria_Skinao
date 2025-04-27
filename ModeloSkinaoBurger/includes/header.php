@@ -1,0 +1,13 @@
+<header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.php"><img src="images/logo.png" alt="Skinão Burger"></a>
+            </div>
+            <div class="nome">
+                <h1>Skinão Burger</h1>
+            </div>
+            <div class="login">
+                <a href="login.php"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>
+    </header>
