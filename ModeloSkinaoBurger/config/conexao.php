@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 //$senha = "&tec77@info!";
 $senha = "root";
-$database = "doc_bd";
+$database = "esboco_hamburgueria";
 
 
 $mysqli = new mysqli($host, $usuario, $senha, $database);
