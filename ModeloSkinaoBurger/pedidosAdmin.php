@@ -12,7 +12,7 @@
     <?php include('includes/headerAdmin.php') ?>
 
 
-
+    <br><br><br>
     <?php include('includes/footerAdmin.php') ?>
 </body>
 </html>

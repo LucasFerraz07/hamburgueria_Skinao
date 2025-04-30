@@ -65,7 +65,9 @@
             <button type="submit">CADASTRAR</button>
         </form>
     </div>
-
+<br><br><br>
     <?php include('includes/footerAdmin.php') ?>
+  
 </body>
+<script src="assets/cadastroAdmin.js"></script>
 </html>
