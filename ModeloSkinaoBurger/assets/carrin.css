@@ -1,9 +1,4 @@
-header {
-    background-color: #1C1C1C;
-    color: #EEEEEE;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -57,15 +52,4 @@ a {
 
 .btn-apagar:hover {
     background-color: #e53935;
-}
-
-footer {
-    background-color: #8D6E63;
-    color: #EEEEEE;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 16px;
-    position: relative;
-    bottom: 0px;
-    width: 100%;
 }

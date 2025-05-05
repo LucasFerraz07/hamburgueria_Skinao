@@ -95,5 +95,7 @@ if(isset($_POST['tipo'])){
     </div>
     <br><br><br>
     <?php include('includes/footerAdmin.php'); ?>
+
+    <script src="assets/cadastroAdmin.js"></script>
 </body>
 </html>
