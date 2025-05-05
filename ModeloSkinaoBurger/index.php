@@ -83,6 +83,7 @@ if ($result && $result->num_rows > 0) {
                                 <h3><?= htmlspecialchars($produto['nome']) ?></h3>
                                 <p><?= htmlspecialchars($produto['descricao']) ?></p>
                                 <p><strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong></p>
+                                <img href="">
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>

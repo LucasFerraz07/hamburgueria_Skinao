@@ -1,6 +1,7 @@
 <?php 
 
 include('config/conexao.php');
+include('config/protect.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

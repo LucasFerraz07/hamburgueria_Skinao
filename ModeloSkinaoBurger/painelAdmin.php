@@ -12,14 +12,17 @@ if ($result_tipos->num_rows > 0) {
     }
 }  
 
-if(isset($_POST['nome']) && isset($_POST['preco']) && isset($_POST['descricao']) && isset($_POST['tproduto'])){
+if(isset($_POST['nome']) && isset($_POST['preco']) && isset($_POST['descricao']) && isset($_POST['tproduto']) && isset($_FILES["arquivo"])){
     $nome = $mysqli->real_escape_string($_POST['nome']);
     $preco = $mysqli->real_escape_string($_POST['preco']);
     $descricao = $mysqli->real_escape_string($_POST['descricao']);
     $tproduto = $mysqli->real_escape_string($_POST['tproduto']);
+    $nome_arquivo = $_FILES["arquivo"]["name"];
+    $caminho_temp = $_FILES["arquivo"]["tmp_name"];
+    $caminho_destino = "uploads/" . $nome_arquivo;
 
 
-            $sql_insert = "INSERT INTO esboco_hamburgueria.produtos (nome, preco, descricao, imagem, tipo_produto_id, disponibilidade) VALUES ('$nome', '$preco', '$descricao', '', '$tproduto', '1')";
+            $sql_insert = "INSERT INTO esboco_hamburgueria.produtos (nome, preco, descricao, imagem, tipo_produto_id, disponibilidade) VALUES ('$nome', '$preco', '$descricao', '$caminho_destino', '$tproduto', '1')";
             if ($mysqli->query($sql_insert)) {
                 echo '<script>alert("Cadastro do Produto realizado com sucesso!");</script>';
 
@@ -40,7 +43,19 @@ if(isset($_POST['tipo'])){
             }
 }
 
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["arquivo"])) {
+//     $nome_arquivo = $_FILES["arquivo"]["name"];
+//     $caminho_temp = $_FILES["arquivo"]["tmp_name"];
+//     $caminho_destino = "uploads/" . $nome_arquivo;
+
+//     $sql_imagem = "INSERT INTO esboco_hamburgueria.produtos (imagem) VALUES ('$caminho_destino')";
+//     $query_imagem = $mysqli->query($sql_imagem) or die("Falha na Execução do código SQL: " . $mysqli->error);
+
+// }
+// 
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -70,7 +85,7 @@ if(isset($_POST['tipo'])){
 
         <div class="container">
             <h2>CADASTRAR PRODUTO</h2>
-            <form action="" method="POST">
+            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST" enctype="multipart/form-data">
                 <label for="nome">Nome: </label>
                 <input type="text" name="nome" id="nome" required>
 
@@ -88,6 +103,9 @@ if(isset($_POST['tipo'])){
                 </option>
                     <?php endforeach; ?>
                 </select>
+
+                <label for="arquivo">Insira a imagem do produto: </label>
+                <input type="file" name="arquivo" id="arquivo" class="form-control" required>
 
                 <button type="submit">CADASTRAR PRODUTO</button>
             </form>

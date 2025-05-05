@@ -1,6 +1,7 @@
 <?php 
 
     include('config/conexao.php');
+    include('config/protect.php');
 
     if(isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['csenha'])){
         $email = $mysqli->real_escape_string($_POST['email']);
