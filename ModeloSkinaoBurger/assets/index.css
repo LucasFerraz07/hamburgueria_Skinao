@@ -1,12 +1,36 @@
+.carrinho {
+    font-size: 30px;
+    color: #000000;
+    /* O ícone vai para o canto direito devido ao flexbox */
+}
+
+.carrinho:hover {
+    color: #ff0000;
+}
+
 .catalogo {
     padding: 20px;
 }
+
+.topo {
+    display: flex;  
+    justify-content: space-between; /* Garante o espaçamento entre o título e o ícone */
+    align-items: center;  /* Alinha o título e o ícone verticalmente no centro */
+}
+
+.topo h1 {
+    margin: 0; /* Remove a margem padrão do h1 */
+    font-size: 24px;
+    flex: 1; /* Faz o título ocupar o espaço restante */
+}
+
 .tipo-produto {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
 }
+
 .tipo-header {
     background-color: #C62828;
     color: white;
@@ -17,24 +41,30 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .tipo-header:hover {
     background-color: #b71c1c;
 }
+
 .produtos {
     display: none;
     background-color: #f9f9f9;
     padding: 15px;
 }
+
 .produto {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
 }
+
 .produto:last-child {
     border-bottom: none;
 }
+
 .produto h3 {
     margin: 0 0 5px 0;
 }
+
 .produto p {
     margin: 3px 0;
 }

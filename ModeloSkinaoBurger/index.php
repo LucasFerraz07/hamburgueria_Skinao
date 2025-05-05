@@ -59,8 +59,17 @@ if ($result && $result->num_rows > 0) {
 <body>
     <?php include('includes/header.php'); ?>
 
+    
     <section class="catalogo">
-        <h1>Catálogo de Produtos</h1>
+        
+    <div class="topo">
+        <h1>Catálogo de Produtos
+            <a href="carrinho.php" class="carrinho">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </h1>
+    </div>
+            <br>
         <?php foreach ($produtos_por_tipo as $tipo): ?>
             <div class="tipo-produto">
                 <div class="tipo-header" onclick="toggleProdutos(this)">

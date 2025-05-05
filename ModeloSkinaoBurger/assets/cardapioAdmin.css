@@ -66,3 +66,17 @@ h1 {
     border-radius: 4px;
     display: inline-block;
 }
+/* Botão de excluir */
+.btn-excluir {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #ff4747;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-excluir:hover {
+    background-color: #e03e3e;
+}

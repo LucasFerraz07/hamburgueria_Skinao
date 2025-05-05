@@ -1,6 +1,23 @@
 <?php 
 
 include('config/conexao.php');
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $query = "DELETE FROM esboco_hamburgueria.produtos WHERE id = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    } else {
+        echo "Erro ao excluir o produto!";
+    }
+}
+
+
 $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
 
 ?>
@@ -26,9 +43,11 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
                 <h3><?= $p['nome'] ?></h3>
                 <p><?= $p['descricao'] ?></p>
                 <p>R$ <?= $p['preco'] ?></p>
+                <a href="?id=<?= $p['id'] ?>" class="btn-excluir">Excluir</a>
             </div>
         <?php endwhile; ?>
     </div>
+
     <br><br><br>
     <?php include('includes/footerAdmin.php') ?>
 </body>
