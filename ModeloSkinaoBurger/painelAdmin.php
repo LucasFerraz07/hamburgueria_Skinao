@@ -25,7 +25,7 @@ if(isset($_POST['nome']) && isset($_POST['preco']) && isset($_POST['descricao'])
             $sql_insert = "INSERT INTO esboco_hamburgueria.produtos (nome, preco, descricao, imagem, tipo_produto_id, disponibilidade) VALUES ('$nome', '$preco', '$descricao', '$caminho_destino', '$tproduto', '1')";
             if ($mysqli->query($sql_insert)) {
                 echo '<script>alert("Cadastro do Produto realizado com sucesso!");</script>';
-
+                move_uploaded_file($caminho_temp, $caminho_destino);
             } else {
                 echo "Erro ao cadastrar Produto: " . $mysqli->error;
             }

@@ -9,7 +9,8 @@ $sql = "
         p.id AS produto_id, 
         p.nome AS produto_nome, 
         p.descricao, 
-        p.preco 
+        p.preco,
+        p.imagem
     FROM esboco_hamburgueria.tipo_produto tp
     LEFT JOIN esboco_hamburgueria.produtos p 
         ON p.tipo_produto_id = tp.id 
@@ -37,7 +38,8 @@ if ($result && $result->num_rows > 0) {
             $produtos_por_tipo[$tipo_id]['produtos'][] = [
                 'nome' => $row['produto_nome'],
                 'descricao' => $row['descricao'],
-                'preco' => $row['preco']
+                'preco' => $row['preco'],
+                'imagem' => $row['imagem']
             ];
         }
     }
@@ -53,7 +55,7 @@ if ($result && $result->num_rows > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/headerFooter.css">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/index.css">
+    <link rel="stylesheet" href="assets/catalogoCliente.css">
     <title>Skinão Burger</title>
 </head>
 <body>
@@ -83,7 +85,7 @@ if ($result && $result->num_rows > 0) {
                                 <h3><?= htmlspecialchars($produto['nome']) ?></h3>
                                 <p><?= htmlspecialchars($produto['descricao']) ?></p>
                                 <p><strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong></p>
-                                <img href="">
+                                <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="Imagem de <?= htmlspecialchars($produto['nome']) ?>" class="produto-imagem">
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
