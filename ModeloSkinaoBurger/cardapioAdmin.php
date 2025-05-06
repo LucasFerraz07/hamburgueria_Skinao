@@ -3,7 +3,7 @@
 include('config/conexao.php');
 include('config/protect.php');
 
-if (isset($_GET['id'])) {
+if (isset($_GET['del'])) {
     $id = $_GET['id'];
 
     $query = "DELETE FROM esboco_hamburgueria.produtos WHERE id = ?";
@@ -17,6 +17,24 @@ if (isset($_GET['id'])) {
         echo "Erro ao excluir o produto!";
     }
 }
+if (isset($_POST['edit'])) { // Editar produto
+     $id = $_GET['id'];
+        $nome = $_POST['nome'];
+        $descricao = $_POST['descricao'];
+        $preco = $_POST['preco'];
+        $imagem = $_POST ['imagem'];
+        $tipo = $_POST['tipo_produto_id'];
+
+        $query = "UPDATE esboco_hamburgueria.produtos SET nome= ?, descricao = ?, preco = ?, imagem = ?, tipo_produto_id = ? WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssii", $nome, $descricao, $preco, $imagem, $tipo);
+        if ($stmt->execute()) {
+            $msg = 'Produto atualizado com sucesso!';
+        } else {
+            $msg = 'Erro ao atualizar o produto!';
+        }
+        $stmt->close();
+    }
 
 
 $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
@@ -44,7 +62,8 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
                 <h3><?= $p['nome'] ?></h3>
                 <p><?= $p['descricao'] ?></p>
                 <p>R$ <?= $p['preco'] ?></p>
-                <a href="?id=<?= $p['id'] ?>" class="btn-excluir">Excluir</a>
+                <a href="?id=<?= $p['del'] ?>" class="btn-excluir">Excluir</a>
+                <a href="?id=<?= $p['edit'] ?>" class="btn-editar">editar</a>
             </div>
         <?php endwhile; ?>
     </div>
