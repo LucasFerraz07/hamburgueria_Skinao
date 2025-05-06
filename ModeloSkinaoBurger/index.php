@@ -52,10 +52,11 @@ if ($result && $result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/headerFooter.css">
-    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/catalogoCliente.css">
+    <link rel="stylesheet" href="assets/headerFooter.css">
     <title>Skinão Burger</title>
 </head>
 <body>
@@ -65,12 +66,11 @@ if ($result && $result->num_rows > 0) {
     <section class="catalogo">
         
     <div class="topo">
-        <h1>Catálogo de Produtos
-            <a href="carrinho.php" class="carrinho">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </h1>
-    </div>
+    <h1>Catálogo de Produtos</h1>
+    <a href="carrinho.php" class="carrinho">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+</div>
             <br>
         <?php foreach ($produtos_por_tipo as $tipo): ?>
             <div class="tipo-produto">

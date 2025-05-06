@@ -46,8 +46,8 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/headerFooter.css">
     <link rel="stylesheet" href="assets/login.css">
+    <link rel="stylesheet" href="assets/headerFooter.css">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <title>Skinão Burger</title>
 </head>
