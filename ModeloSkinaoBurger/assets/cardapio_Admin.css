@@ -1,0 +1,202 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1C1C1C;
+    color: #EEEEEE;
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #FFCA28;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Container de produtos */
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card de produto */
+.produto {
+    background-color: #FFFFFF;
+    border-left: 5px solid #C62828;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 300px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Nome do produto */
+.produto h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #1C1C1C;
+}
+
+/* Descrição */
+.produto p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #5D4037;
+}
+
+/* Preço */
+.produto p:last-child {
+    font-weight: bold;
+    color: #C62828;
+    background-color: #FFCA28;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+/* Botões */
+.btn-excluir,
+.btn-editar {
+    display: inline-block;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+}
+
+/* Botão de excluir */
+.btn-excluir {
+    background-color: #FF4747;
+    color: white;
+}
+
+.btn-excluir:hover {
+    background-color: #D63A3A;
+}
+
+/* Botão de editar */
+.btn-editar {
+    background-color: #FFCA28;
+    color: #1C1C1C;
+    font-weight: bold;
+}
+
+.btn-editar:hover {
+    background-color: #f0b000;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .produto {
+        width: 90%;
+    }
+}
+
+/* Formulário de edição de produto */
+.form-editar {
+    background-color: #2C2C2C;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+.form-editar label {
+    font-weight: bold;
+    color: #FFCA28;
+    margin-top: 10px;
+}
+
+/* Inputs e select */
+.form-editar input[type="text"],
+.form-editar input[type="number"],
+.form-editar select {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #EEEEEE;
+    color: #1C1C1C;
+    font-size: 1rem;
+    width: 100%;
+}
+
+/* Botão salvar */
+.form-editar button[type="submit"] {
+    background-color: #C62828;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-editar button[type="submit"]:hover {
+    background-color: #a91e1e;
+}
+
+/* Modal Overlay */
+.modal {
+    display: block; /* Será alterado via JS para aparecer somente quando necessário */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+    background-color: #1C1C1C;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #C62828;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    color: #EEEEEE;
+    position: relative;
+}
+
+/* Botão de Fechar */
+.close {
+    color: #FFCA28;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffffff;
+}
