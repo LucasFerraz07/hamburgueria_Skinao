@@ -25,10 +25,12 @@ if (isset($_POST['edit'])) { // Editar produto
         $preco = $_POST['preco'];
         $imagem = $_POST ['imagem'];
         $tipo = $_POST['tipo_produto_id'];
+        $disponibilidade = $_POST['disponibilidade'];
 
-        $query = "UPDATE esboco_hamburgueria.produtos SET nome= ?, descricao = ?, preco = ?, imagem = ?, tipo_produto_id = ? WHERE id = ?";
+
+        $query = "UPDATE esboco_hamburgueria.produtos SET nome= ?, descricao = ?, preco = ?, imagem = ?, tipo_produto_id = ?, disponibilidade = ? WHERE id = ?";
         $stmt = $mysqli->prepare($query);
-        $stmt->bind_param("ssdssi", $nome, $descricao, $preco, $imagem, $tipo, $id);
+        $stmt->bind_param("ssdssii", $nome, $descricao, $preco, $imagem, $tipo, $disponibilidade, $id);
         if ($stmt->execute()) {
             header("Location: " . $_SERVER['PHP_SELF']);
             exit();
@@ -60,7 +62,7 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/headerFooterAdmin.css">
-    <link rel="stylesheet" href="assets/cardapio_Admin.css">
+    <link rel="stylesheet" href="assets/cardapioAdmin.css">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <title>Skinão Burger</title>
 </head>
@@ -70,7 +72,7 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
     <h1>Produtos</h1>
     <div class="produtos">
         <?php while ($p = $produtos->fetch_assoc()): ?>
-            <div class="produto">
+            <div class="produto <?= $p['disponibilidade'] == 0 ? 'indisponivel' : '' ?>">
                 <h3><?= $p['nome'] ?></h3>
                 <p><?= $p['descricao'] ?></p>
                 <p>R$ <?= $p['preco'] ?></p>
@@ -100,6 +102,17 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
                 <input type="text" name="imagem" value="<?= $produtoEditar['imagem'] ?>">
 
                 <input type="hidden" name="tipo_produto_id" value="<?= $produtoEditar['tipo_produto_id'] ?>">
+
+                <label>Disponibilidade:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="disponibilidade" value="1" <?= $produtoEditar['disponibilidade'] == 1 ? 'checked' : '' ?>> Disponível
+                    </label>
+                    <label>
+                        <input type="radio" name="disponibilidade" value="0" <?= $produtoEditar['disponibilidade'] == 0 ? 'checked' : '' ?>> Indisponível
+                    </label>
+                </div>
+
 
                 <button type="submit" name="edit">Salvar Alterações</button>
             </form>

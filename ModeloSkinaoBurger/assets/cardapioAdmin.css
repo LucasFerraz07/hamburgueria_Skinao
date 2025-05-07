@@ -200,3 +200,10 @@ h1 {
 .close:hover {
     color: #ffffff;
 }
+
+.produto.indisponivel {
+    background-color: #ccc;
+    color: #666;
+    opacity: 0.2;
+}
+

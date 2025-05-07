@@ -7,7 +7,7 @@
                 <h1>Skinão Burger</h1>
             </div>
             <div class="login">
-                <a href="login.php"><i class="fas fa-user"></i></a>
+                <a href="info.php"><i class="fas fa-info-circle"></i></a>
             </div>
         </nav>
     </header>

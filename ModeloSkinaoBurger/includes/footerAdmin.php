@@ -1,7 +1,7 @@
 <footer class="admin-footer">
     <nav class="footer-nav">
         <a href="cadastroAdmin.php" class="nav-item" title="Cadastro">
-            <i class="fas fa-user"></i>
+            <i class="fa-solid fa-user-plus"></i>
         </a>
         <a href="painelAdmin.php" class="nav-item" title="Painel">
             <i class="fas fa-plus"></i>
