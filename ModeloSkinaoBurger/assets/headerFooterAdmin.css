@@ -1,5 +1,5 @@
 /* Paleta: 
-   #fff (preto suave),
+   #222 (preto suave),
    #C62828 (vermelho escuro),
    #FFCA28 (amarelo vibrante),
    #EEEEEE (cinza claro),
@@ -16,7 +16,7 @@
 
 /* === HEADER (Navbar) === */
 header {
-    background-color: #fff;
+    background-color: #222;
     padding: 10px 20px;
     border-bottom: 2px solid #C62828;
     margin-bottom: 10px;
@@ -54,7 +54,7 @@ header {
 
 /* === FOOTER (Admin) === */
 .admin-footer {
-    background-color: #fff;
+    background-color: #222;
     padding: 12px 0;
     border-top: 2px solid #C62828;
     position: fixed;
