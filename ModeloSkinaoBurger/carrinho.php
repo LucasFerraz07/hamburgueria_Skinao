@@ -21,7 +21,6 @@ $sql = "SELECT * FROM pedidos";
 $result = $mysqli->query($sql);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,8 +32,8 @@ $result = $mysqli->query($sql);
     <link rel="stylesheet" href="assets/carrin.css">
     <title>Pedidos - Skinão Burger</title>
 </head>
-<body>
 <?php include('includes/header.php'); ?>
+<body>
     <h1>Pedidos do Cliente</h1>
 
     <table border="1">
@@ -70,6 +69,8 @@ $result = $mysqli->query($sql);
             <?php endif; ?>
         </tbody>
     </table>
+
+    <br><br><br>
 
     <?php include('includes/footer.php'); ?>
 </body>

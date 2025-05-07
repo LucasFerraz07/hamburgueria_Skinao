@@ -67,7 +67,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         </form>
     </div>
 
-    
+    <br><br><br>
 
     <?php include('includes/footer.php'); ?>
 </body>

@@ -1,8 +1,9 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Estilo da navbar */
@@ -41,15 +42,17 @@ header {
 }
 
 /* Footer */
-.footer {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #222;
-  color: #fff;
-  text-align: center;
-  padding: 16px 10px;
-}
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 6px 10px;
+    z-index: 100;
+  }
 
 .footer-container {
   max-width: 1000px;
@@ -72,7 +75,7 @@ header {
 }
 
 .footer-icons a:hover {
-  color: #00d1b2;
+  color:#C62828 ;
 }
 
 .footer-text {

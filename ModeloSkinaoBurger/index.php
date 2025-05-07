@@ -54,7 +54,6 @@ if ($result && $result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/headerFooter.css">
     <link rel="stylesheet" href="assets/catalogoCliente.css">
     <link rel="stylesheet" href="assets/headerFooter.css">
     <title>Skinão Burger</title>
@@ -96,6 +95,7 @@ if ($result && $result->num_rows > 0) {
         <?php endforeach; ?>
     </section>
 
+ <br><br><br>
     <?php include('includes/footer.php'); ?>
 
     <script>
