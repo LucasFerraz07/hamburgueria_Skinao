@@ -81,11 +81,13 @@ if ($result && $result->num_rows > 0) {
                     <?php if (count($tipo['produtos']) > 0): ?>
                         <?php foreach ($tipo['produtos'] as $produto): ?>
                             <div class="produto">
-                                <h3><?= htmlspecialchars($produto['nome']) ?></h3>
-                                <p><?= htmlspecialchars($produto['descricao']) ?></p>
-                                <p><strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong></p>
-                                <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="Imagem de <?= htmlspecialchars($produto['nome']) ?>" class="produto-imagem">
-                            </div>
+                        <div class="produto-info">
+                            <h3><?= htmlspecialchars($produto['nome']) ?></h3>
+                            <p><?= htmlspecialchars($produto['descricao']) ?></p>
+                            <p><strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong></p>
+                        </div>
+                        <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="Imagem de <?= htmlspecialchars($produto['nome']) ?>" class="produto-imagem">
+                    </div>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <p>Nenhum produto disponível neste tipo.</p>

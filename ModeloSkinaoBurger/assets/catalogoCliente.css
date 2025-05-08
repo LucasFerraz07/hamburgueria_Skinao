@@ -2,7 +2,6 @@
     font-size: 30px;
     color: #000000;
     transition: color 0.3s ease;
-    /* O ícone vai para o canto direito devido ao flexbox */
 }
 
 .carrinho:hover {
@@ -14,15 +13,15 @@
 }
 
 .topo {
-    display: flex;  
-    justify-content: space-between; /* Garante o espaçamento entre o título e o ícone */
-    align-items: center;  /* Alinha o título e o ícone verticalmente no centro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .topo h1 {
-    margin: 0; /* Remove a margem padrão do h1 */
+    margin: 0;
     font-size: 24px;
-    flex: 1; /* Faz o título ocupar o espaço restante */
+    flex: 1;
 }
 
 .tipo-produto {
@@ -47,42 +46,84 @@
     background-color: #b71c1c;
 }
 
- .produtos {
+.produtos {
     display: none;
+    flex-wrap: wrap;
+    gap: 15px;
     background-color: #f9f9f9;
     padding: 15px;
-}
-
-
-.produto:last-child {
-    border-bottom: none;
-}
-
-.produto h3 {
-    margin: 0 0 5px 0;
-}
-
-.produto p {
-    margin: 3px 0;
+    justify-content: center;
 }
 
 .produto {
-    position: relative;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
 }
 
+.produto:hover {
+    transform: scale(1.02);
+}
+
+/* Textos */
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 50%;
+}
+
+.produto-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.produto-info p {
+    margin: 3px 0;
+    color: #666;
+}
+
+/* Imagem */
 .produto-imagem {
-    max-width: 120px; /* Tamanho fixo */
+    max-width: 100px;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
     margin-left: 1rem;
 }
 
+@media (max-width: 768px) {
+    .produto {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .produto-info {
+        max-width: 100%; 
+    }
+
+    .produto-imagem {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 90px;
+    }
+
+    .produto-info h3 {
+        font-size: 1rem;
+    }
+
+    .produto-info p {
+        font-size: 0.9rem;
+    }
+}

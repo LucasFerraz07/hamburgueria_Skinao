@@ -3,7 +3,6 @@
 include('config/conexao.php');
 include('config/protect.php');
 
-
 if (isset($_GET['del'])) {
     $id = $_GET['id'];
 
@@ -49,8 +48,6 @@ if (isset($_GET['edit']) && isset($_GET['id'])) {
     $produtoEditar = $result->fetch_assoc();
 }
 
-
-
 $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
 
 ?>
@@ -61,8 +58,8 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/headerFooterAdmin.css">
     <link rel="stylesheet" href="assets/cardapioAdmin.css">
+    <link rel="stylesheet" href="assets/headerFooterAdmin.css">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <title>Skinão Burger</title>
 </head>
@@ -113,14 +110,11 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
                     </label>
                 </div>
 
-
                 <button type="submit" name="edit">Salvar Alterações</button>
             </form>
         </div>
     </div>
 <?php endif; ?>
-
-
 
     <br><br><br>
     <?php include('includes/footerAdmin.php') ?>
@@ -143,6 +137,5 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
         }
     };
     </script>
-
 </body>
 </html>
