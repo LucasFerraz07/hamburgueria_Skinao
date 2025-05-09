@@ -85,6 +85,13 @@ if ($result && $result->num_rows > 0) {
                             <h3><?= htmlspecialchars($produto['nome']) ?></h3>
                             <p><?= htmlspecialchars($produto['descricao']) ?></p>
                             <p><strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong></p>
+
+                            <form action="adicionar_carrinho.php" method="POST">
+                                <input type="hidden" name="nome" value="<?= htmlspecialchars($produto['nome']) ?>">
+                                <input type="hidden" name="preco" value="<?= htmlspecialchars($produto['preco']) ?>">
+                                <input type="number" name="quantidade" value="1" min="1" required style="width: 50px;">
+                                <button type="submit">Adicionar ao Carrinho</button>
+                            </form>
                         </div>
                         <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="Imagem de <?= htmlspecialchars($produto['nome']) ?>" class="produto-imagem">
                     </div>

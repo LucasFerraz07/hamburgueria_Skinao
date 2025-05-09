@@ -17,7 +17,7 @@ if (isset($_GET['apagar_id'])) {
 }
 
 // Consulta
-$sql = "SELECT * FROM pedidos";
+$sql = "SELECT id, produto_nome, quantidade, preco, status FROM pedidos ORDER BY id DESC";
 $result = $mysqli->query($sql);
 
 ?>
@@ -37,37 +37,36 @@ $result = $mysqli->query($sql);
     <h1>Pedidos do Cliente</h1>
 
     <table border="1">
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Preço</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if ($result && $result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['id']) ?></td>
-                        <td><?= htmlspecialchars($row['produto_nome']) ?></td>
-                        <td><?= htmlspecialchars($row['quantidade']) ?></td>
-                        <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
-                        <td>
-                            <?php if ($row['status'] == 'pendente'): ?>
-                                <a href="?finalizar_id=<?= $row['id'] ?>" class="btn-finalizar">Finalizar Pedido</a>
-                            <?php endif; ?>
-                            <a href="?apagar_id=<?= $row['id'] ?>" class="btn-apagar">Apagar Pedido</a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="10">Nenhum pedido encontrado.</td>
-                </tr>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+<?php while ($row = $result->fetch_assoc()): ?>
+    <tr>
+        <td><?= $row['id'] ?></td>
+        <td><?= htmlspecialchars($row['produto_nome']) ?></td>
+        <td><?= $row['quantidade'] ?></td>
+        <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
+        <td>R$ <?= number_format($row['preco'] * $row['quantidade'], 2, ',', '.') ?></td>
+        <td><?= ucfirst($row['status']) ?></td>
+        <td>
+            <?php if ($row['status'] == 'pendente'): ?>
+                <a href="?finalizar_id=<?= $row['id'] ?>" class="btn-finalizar">Finalizar</a>
             <?php endif; ?>
-        </tbody>
+            <a href="?apagar_id=<?= $row['id'] ?>" class="btn-apagar">Apagar</a>
+        </td>
+    </tr>
+<?php endwhile; ?>
+</tbody>
+
     </table>
 
     <br><br><br>
