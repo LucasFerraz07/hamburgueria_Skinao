@@ -2,6 +2,17 @@
 
 include('config/conexao.php');
 
+session_start();
+
+$quantidade_total = 0;
+
+if (isset($_SESSION['carrinho']) && is_array($_SESSION['carrinho'])) {
+    foreach ($_SESSION['carrinho'] as $item) {
+        $quantidade_total += $item['quantidade'];
+    }
+}
+
+
 $sql = "
     SELECT 
         tp.id AS tipo_id, 
@@ -66,9 +77,25 @@ if ($result && $result->num_rows > 0) {
         
     <div class="topo">
     <h1>Catálogo de Produtos</h1>
-    <a href="carrinho.php" class="carrinho">
+
+    <a href="carrinho.php" class="carrinho" style="position: relative;">
         <i class="fas fa-shopping-cart"></i>
+        <?php if ($quantidade_total > 0): ?>
+            <span style="
+                position: absolute;
+                top: -8px;
+                right: -10px;
+                background: red;
+                color: white;
+                font-size: 12px;
+                padding: 2px 6px;
+                border-radius: 50%;
+            ">
+                <?= $quantidade_total ?>
+            </span>
+        <?php endif; ?>
     </a>
+
 </div>
             <br>
         <?php foreach ($produtos_por_tipo as $tipo): ?>

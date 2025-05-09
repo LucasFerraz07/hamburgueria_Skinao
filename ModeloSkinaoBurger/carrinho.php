@@ -1,76 +1,95 @@
 <?php
-include('config/conexao.php');
-
-if (isset($_GET['finalizar_id'])) {
-    $pedido_id = $_GET['finalizar_id'];
-    $sql = "UPDATE pedidos SET status = 'finalizado' WHERE id = $pedido_id";
-    $mysqli->query($sql);
-    header("Location: carrinho.php"); // Redireciona para a página
-}
-
-// Função para apagar
-if (isset($_GET['apagar_id'])) {
-    $pedido_id = $_GET['apagar_id'];
-    $sql = "DELETE FROM pedidos WHERE id = $pedido_id";
-    $mysqli->query($sql);
-    header("Location: carrinho.php"); // Redireciona
-}
-
-// Consulta
-$sql = "SELECT id, produto_nome, quantidade, preco, status FROM pedidos ORDER BY id DESC";
-$result = $mysqli->query($sql);
-
+session_start();
+$carrinho = $_SESSION['carrinho'] ?? [];
+$total = 0;
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/carrin.css">
+    <link rel="stylesheet" href="assets/carrinho.css">
     <link rel="stylesheet" href="assets/headerFooter.css">
-    <link rel="stylesheet" href="assets/carrin.css">
-    <title>Pedidos - Skinão Burger</title>
+    <title>Skinão Burger</title>
 </head>
-<?php include('includes/header.php'); ?>
 <body>
-    <h1>Pedidos do Cliente</h1>
+<?php include('includes/header.php'); ?>
 
-    <table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Produto</th>
-        <th>Quantidade</th>
-        <th>Preço</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Ações</th>
-    </tr>
-</thead>
-<tbody>
-<?php while ($row = $result->fetch_assoc()): ?>
-    <tr>
-        <td><?= $row['id'] ?></td>
-        <td><?= htmlspecialchars($row['produto_nome']) ?></td>
-        <td><?= $row['quantidade'] ?></td>
-        <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
-        <td>R$ <?= number_format($row['preco'] * $row['quantidade'], 2, ',', '.') ?></td>
-        <td><?= ucfirst($row['status']) ?></td>
-        <td>
-            <?php if ($row['status'] == 'pendente'): ?>
-                <a href="?finalizar_id=<?= $row['id'] ?>" class="btn-finalizar">Finalizar</a>
-            <?php endif; ?>
-            <a href="?apagar_id=<?= $row['id'] ?>" class="btn-apagar">Apagar</a>
-        </td>
-    </tr>
-<?php endwhile; ?>
-</tbody>
+<section class="carrinho-container">
+    <h1>Seu Carrinho</h1>
 
-    </table>
+    <?php if (count($carrinho) > 0): ?>
+        <table class="tabela-carrinho">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço Unitário</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($carrinho as $index => $item): 
+                    $subtotal = $item['preco'] * $item['quantidade'];
+                    $total += $subtotal;
+                ?>
+                    <tr>
+                        <td><?= htmlspecialchars($item['nome']) ?></td>
+                        <td>R$ <?= number_format($item['preco'], 2, ',', '.') ?></td>
+                        <td><?= $item['quantidade'] ?></td>
+                        <td>R$ <?= number_format($subtotal, 2, ',', '.') ?></td>
+                        <td>
+                            <form method="POST" action="remover_carrinho.php">
+                                <input type="hidden" name="index" value="<?= $index ?>">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
 
-    <br><br><br>
+        <h2>Total Geral: R$ <?= number_format($total, 2, ',', '.') ?></h2>
 
-    <?php include('includes/footer.php'); ?>
+    <?php else: ?>
+        <p>Seu carrinho está vazio.</p>
+    <?php endif; ?>
+</section>
+
+<form action="finalizar_pedido.php" method="POST" class="form-finalizar">
+    <h2>Dados para Entrega</h2>
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="text" name="rua" placeholder="Rua" required>
+    <input type="text" name="numero" placeholder="Número" required>
+    <input type="text" name="bairro" placeholder="Bairro" required>
+    <input type="text" name="complemento" placeholder="Complemento">
+    <input type="text" name="cidade" placeholder="Cidade" required>
+    <input type="text" name="estado" placeholder="Estado" required>
+    <input type="text" name="cep" placeholder="CEP" required>
+    <input type="hidden" name="total" value="<?= number_format($total, 2, ',', '.') ?>">
+
+    <label for="forma_pagamento">Forma de Pagamento:</label>
+    <select name="forma_pagamento" required>
+        <?php
+        include('config/conexao.php');
+        $formas = $mysqli->query("SELECT id, nome FROM forma_pagamento");
+        while ($f = $formas->fetch_assoc()):
+        ?>
+            <option value="<?= $f['id'] ?>"><?= htmlspecialchars($f['nome']) ?></option>
+        <?php endwhile; ?>
+    </select>
+
+    <input type="text" name="Observacao" placeholder="Observação Pagamento">
+
+    <button type="submit">Finalizar Pedido</button>
+</form>
+
+
+<?php include('includes/footer.php'); ?>
 </body>
 </html>

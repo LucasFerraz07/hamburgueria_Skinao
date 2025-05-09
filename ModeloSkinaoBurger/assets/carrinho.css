@@ -1,0 +1,122 @@
+body {
+    background-color: #1C1C1C;
+    color: #EEEEEE;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.carrinho-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.carrinho-container h1 {
+    color: #FFCA28;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #1C1C1C;
+}
+
+.tabela-carrinho th,
+.tabela-carrinho td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.tabela-carrinho th {
+    background-color: #C62828;
+    color: white;
+}
+
+.tabela-carrinho tr:hover {
+    background-color: #333;
+}
+
+.tabela-carrinho button {
+    padding: 6px 10px;
+    background-color: #C62828;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tabela-carrinho button:hover {
+    background-color: #a41f1f;
+}
+
+.botao-finalizar {
+    display: inline-block;
+    background-color: #FFCA28;
+    color: #1C1C1C;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.botao-finalizar:hover {
+    background-color: #e6b820;
+}
+
+/* Formulário de finalização */
+.form-finalizar {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-finalizar h2 {
+    text-align: center;
+    color: #FFCA28;
+    margin-bottom: 15px;
+}
+
+.form-finalizar input,
+.form-finalizar select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #3d3d3d;
+    color: #EEEEEE;
+}
+
+.form-finalizar select option {
+    background-color: #1C1C1C;
+}
+
+.form-finalizar button {
+    padding: 12px;
+    background-color: #C62828;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-finalizar button:hover {
+    background-color: #a41f1f;
+}
