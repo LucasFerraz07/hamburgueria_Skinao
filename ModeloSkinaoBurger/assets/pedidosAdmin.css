@@ -1,0 +1,28 @@
+.container-pedidos {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.pedido-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.pedido-card h2 {
+    color: #C62828;
+    margin-bottom: 8px;
+}
+
+.pedido-card p, .pedido-card li {
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+.pedido-card ul {
+    padding-left: 18px;
+}

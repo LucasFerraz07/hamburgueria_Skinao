@@ -105,7 +105,7 @@ if(isset($_POST['tipo'])){
                 </select>
 
                 <label for="arquivo">Insira a imagem do produto: </label>
-                <input type="file" name="arquivo" id="arquivo" class="form-control" required>
+                <input type="file" name="arquivo" id="arquivo" class="form-control">
 
                 <button type="submit">CADASTRAR PRODUTO</button>
             </form>

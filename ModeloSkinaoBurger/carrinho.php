@@ -1,4 +1,6 @@
 <?php
+
+include('config/conexao.php');
 session_start();
 $carrinho = $_SESSION['carrinho'] ?? [];
 $total = 0;
@@ -68,15 +70,23 @@ $total = 0;
     <input type="text" name="numero" placeholder="Número" required>
     <input type="text" name="bairro" placeholder="Bairro" required>
     <input type="text" name="complemento" placeholder="Complemento">
-    <input type="text" name="cidade" placeholder="Cidade" required>
-    <input type="text" name="estado" placeholder="Estado" required>
+
+     <label for="cidade">Cidade: </label>
+    <select name="cidade" required>
+        <?php
+        $cities = $mysqli->query("SELECT id, nome FROM esboco_hamburgueria.cidade");
+        while ($c = $cities->fetch_assoc()):
+        ?>
+            <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['nome']) ?></option>
+        <?php endwhile; ?>
+    </select>
+
     <input type="text" name="cep" placeholder="CEP" required>
     <input type="hidden" name="total" value="<?= number_format($total, 2, ',', '.') ?>">
 
     <label for="forma_pagamento">Forma de Pagamento:</label>
     <select name="forma_pagamento" required>
         <?php
-        include('config/conexao.php');
         $formas = $mysqli->query("SELECT id, nome FROM forma_pagamento");
         while ($f = $formas->fetch_assoc()):
         ?>
@@ -84,7 +94,8 @@ $total = 0;
         <?php endwhile; ?>
     </select>
 
-    <input type="text" name="Observacao" placeholder="Observação Pagamento">
+    <input type="text" name="observacao" placeholder="Observação Pagamento">
+    <input type="text" name="observacao_pedido" placeholder="Observação do Pedido">
 
     <button type="submit">Finalizar Pedido</button>
 </form>

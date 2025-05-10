@@ -12,34 +12,34 @@ $rua = $_POST['rua'] ?? '';
 $numero = $_POST['numero'] ?? '';
 $bairro = $_POST['bairro'] ?? '';
 $complemento = $_POST['complemento'] ?? '';
-$cidade = $_POST['cidade'] ?? '';
-$estado = $_POST['estado'] ?? '';
+$cidade = intval($_POST['cidade'] ?? 0);
 $cep = $_POST['cep'] ?? '';
 $forma_pagamento = intval($_POST['forma_pagamento'] ?? 0);
 $obs_pagamento = $_POST['observacao'] ?? '';
+$obs_pedido = $_POST['observacao_pedido'] ?? '';
 $total = str_replace(',', '.', $_POST['total'] ?? '0');
 
 // Validação simples
-if (!$nome || !$telefone || !$rua || !$numero || !$bairro || !$cidade || !$estado || !$cep || !$forma_pagamento) {
-    die('Todos os campos são obrigatórios.');
+if (!$nome || !$telefone || !$rua || !$numero || !$bairro || !$cidade || !$cep || !$forma_pagamento) {
+    die('Alguns campos não preenchidos são obrigatórios.');
 }
 
 // Salva endereço
-$stmt = $mysqli->prepare("INSERT INTO endereco (bairro, rua, numero, complemento, cep, cidade) VALUES ('$bairro', '$rua', '$numero', '$complemento', '$cep', '$cidade')");
+$stmt = $mysqli->prepare("INSERT INTO esboco_hamburgueria.endereco (bairro, rua, numero, complemento, cep, cidade_id) VALUES ('$bairro', '$rua', '$numero', '$complemento', '$cep', '$cidade')");
 $stmt->execute();
 $endereco_id = $stmt->insert_id;
 $stmt->close();
 
 // Cria pedido
-$stmt = $mysqli->prepare("INSERT INTO pedidos (nome, telefone, valor_total, endereco_id, forma_pagamento_id) VALUES ('$nome', '$telefone', '$total', '$endereco_id', '$forma_pagamento')");
+$stmt = $mysqli->prepare("INSERT INTO esboco_hamburgueria.pedidos (nome, telefone, valor_total, endereco_id, forma_pagamento_id, observacao_pagamento, observacao_produto) VALUES ('$nome', '$telefone', '$total', '$endereco_id', '$forma_pagamento', '$obs_pagamento', '$obs_pedido')");
 $stmt->execute();
 $pedido_id = $stmt->insert_id;
 $stmt->close();
 
 
 // Associa produtos ao pedido
-$stmt = $mysqli->prepare("SELECT id FROM produtos WHERE nome = ? LIMIT 1");
-$insert_item = $mysqli->prepare("INSERT INTO pedidos_has_produtos (pedidos_id, produtos_id, quantidade, preco_unitario) VALUES (?, ?, ?, ?)");
+$stmt = $mysqli->prepare("SELECT id FROM esboco_hamburgueria.produtos WHERE nome = ? LIMIT 1");
+$insert_item = $mysqli->prepare("INSERT INTO esboco_hamburgueria.pedidos_has_produtos (pedidos_id, produtos_id, quantidade, preco_unitario) VALUES (?, ?, ?, ?)");
 
 foreach ($_SESSION['carrinho'] as $item) {
     $nome_produto = $item['nome'];

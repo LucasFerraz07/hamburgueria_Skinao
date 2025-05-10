@@ -19,10 +19,9 @@
 
                 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
     
-                $sql_insert = "INSERT INTO esboco_hamburgueria.usuarios (nome, senha, email, permissoes_id) VALUES ('$nome', '$senhaHash', '$email', '2')";
+                $sql_insert = "INSERT INTO esboco_hamburgueria.usuarios (nome, senha, email, permissoes_id) VALUES ('$nome', '$senhaHash', '$email', '1')";
                 if ($mysqli->query($sql_insert)) {
-                    echo "Cadastro realizado com sucesso!";
-                    header("Location: index.php");
+                    echo '<script>alert("Cadastro do Usuário ADMIN realizado com sucesso!");</script>';
 
                 } else {
                     echo "Erro ao cadastrar: " . $mysqli->error;

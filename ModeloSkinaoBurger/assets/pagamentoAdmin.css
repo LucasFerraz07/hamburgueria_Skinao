@@ -1,0 +1,116 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1C1C1C;
+    color: #EEEEEE;
+}
+
+/* Container do formulário */
+.container {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: #2E2E2E;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Título ou label */
+.container label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #FFCA28;
+}
+
+/* Campo de texto */
+.container input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #8D6E63;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #EEEEEE;
+    color: #1C1C1C;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Botão */
+.container button {
+    background-color: #C62828;
+    color: #EEEEEE;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.container button:hover {
+    background-color: #FFCA28;
+    color: #1C1C1C;
+}
+
+.tabela-pagamentos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabela-pagamentos th,
+.tabela-pagamentos td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-pagamentos th {
+    background-color: #C62828; /* vermelho escuro */
+    color: #fff;
+    font-size: 16px;
+}
+
+.tabela-pagamentos td {
+    font-size: 15px;
+    color: #333;
+    background-color: #FAFAFA;
+}
+
+.tabela-pagamentos tr:last-child td {
+    border-bottom: none;
+}
+
+
+.btn-excluir {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-excluir:hover {
+    background-color: #a31f1f;
+}
+
+
+/* Responsividade opcional */
+@media (max-width: 600px) {
+    .container {
+        margin: 30px 20px;
+    }
+}
