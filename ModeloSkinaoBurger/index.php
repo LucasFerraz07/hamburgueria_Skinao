@@ -116,8 +116,14 @@ if ($result && $result->num_rows > 0) {
                             <form action="adicionar_carrinho.php" method="POST">
                                 <input type="hidden" name="nome" value="<?= htmlspecialchars($produto['nome']) ?>">
                                 <input type="hidden" name="preco" value="<?= htmlspecialchars($produto['preco']) ?>">
-                                <input type="number" name="quantidade" value="1" min="1" required style="width: 50px;">
-                                <button type="submit">Adicionar ao Carrinho</button>
+                                <div class="quantidade-wrapper">
+                                <div class="grupo-quantidade">
+                                    <button type="button" class="botao-menor">−</button>
+                                    <input type="number" name="quantidade" value="1" min="1" required>
+                                    <button type="button" class="botao-maior">+</button>
+                                </div>
+                                    <button class="botao-adicionar" type="submit">Adicionar 🛒</button>
+                                </div>
                             </form>
                         </div>
                         <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="Imagem de <?= htmlspecialchars($produto['nome']) ?>" class="produto-imagem">
@@ -135,14 +141,37 @@ if ($result && $result->num_rows > 0) {
     <?php include('includes/footer.php'); ?>
 
     <script>
-        function toggleProdutos(element) {
-            const produtosDiv = element.nextElementSibling;
-            produtosDiv.style.display = (produtosDiv.style.display === "block") ? "none" : "block";
+    // Alterna a visibilidade dos produtos por tipo
+    function toggleProdutos(element) {
+        const produtosDiv = element.nextElementSibling;
+        produtosDiv.style.display = (produtosDiv.style.display === "block") ? "none" : "block";
 
-            const icon = element.querySelector('i');
-            icon.classList.toggle('fa-chevron-down');
-            icon.classList.toggle('fa-chevron-up');
-        }
-    </script>
+        const icon = element.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+    }
+
+    // Lógica para botões de quantidade (+ e -)
+    document.addEventListener("DOMContentLoaded", function () {
+        const wrappers = document.querySelectorAll('.quantidade-wrapper');
+
+        wrappers.forEach(wrapper => {
+            const input = wrapper.querySelector('input[name="quantidade"]');
+            const botaoMais = wrapper.querySelector('.botao-maior');
+            const botaoMenor = wrapper.querySelector('.botao-menor');
+
+            botaoMais.addEventListener('click', () => {
+                input.value = parseInt(input.value) + 1;
+            });
+
+            botaoMenor.addEventListener('click', () => {
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

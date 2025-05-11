@@ -101,6 +101,78 @@
     margin-left: 1rem;
 }
 
+.quantidade-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+/* Grupo de quantidade (− número +) */
+.grupo-quantidade {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.grupo-quantidade input[type="number"] {
+    width: 50px;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.botao-menor, .botao-maior {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #1C1C1C;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.botao-menor:hover, .botao-maior:hover {
+    background-color: #c6c6c6;
+}
+
+/* Botão de adicionar */
+.botao-adicionar {
+    padding: 10px 16px;
+    font-size: 16px;
+    background-color: #C62828;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.botao-adicionar:hover {
+    background-color: #a41f1f;
+}
+
+/* Remove as setinhas do input number, NÃO MEXE */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/*                                           */
+
 @media (max-width: 768px) {
     .produto {
         width: 100%;

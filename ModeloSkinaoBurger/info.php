@@ -23,7 +23,7 @@
     </section>
 
     <div class="loginAdm">
-        <a href="loginAdmin.php"><p><strong>Área Restrita </strong></p> <i class="fa-solid fa-user"></i></a>
+        <a href="loginAdmin.php"><p>Área Restrita</p> <i class="fa-solid fa-user"></i></a>
     </div>
 <br><br><br><br><br><br>
     <?php include('includes/footer.php'); ?>
