@@ -41,12 +41,12 @@ $pagamentos = $mysqli->query("SELECT id, nome FROM forma_pagamento ORDER BY id D
         <form method="post">
             <label for="pay"><h2>Novo método de pagamento:</h2></label>
             <input type="text" name="pay" id="pay" required>
-            <button type="submit">CADASTRAR</button>
+            <button type="submit">CADASTRAR PAGAMENTO</button>
         </form>
 
         <hr><br>
 
-        <h2>Métodos Cadastrados</h2>
+        <h2>Métodos Cadastrados:</h2>
         <table class="tabela-pagamentos">
             <thead>
                 <tr>

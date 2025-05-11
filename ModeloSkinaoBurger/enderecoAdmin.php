@@ -45,7 +45,7 @@ $result_cidades = $mysqli->query($sql_cidades);
         <form method="post">
             <label for="city"><h2>Nova cidade para entrega:</h2></label>
             <input type="text" name="city" id="city" required>
-            <button type="submit">CADASTRAR NOVA CIDADE</button>
+            <button type="submit">CADASATRAR CIDADE</button>
         </form>
     </div>
 
@@ -57,11 +57,12 @@ $result_cidades = $mysqli->query($sql_cidades);
                 <li>
                     <i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($cidade['nome']) ?>
                     <form method="post" class="form-excluir">
-                        <input type="hidden" name="delete_id" value="<?= $cidade['id'] ?>">
-                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta cidade?')">
-                            Excluir
-                        </button>
-                    </form>
+    <input type="hidden" name="delete_id" value="<?= $cidade['id'] ?>">
+   <button type="submit" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir esta cidade?')">
+    Excluir
+</button>
+
+</form>
                 </li>
             <?php endwhile; ?>
         </ul>

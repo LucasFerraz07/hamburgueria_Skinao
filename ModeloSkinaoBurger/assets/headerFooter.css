@@ -64,12 +64,12 @@ header {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 26px;
+  gap: 30px;
 }
 
 .footer-icons a {
   color: #fff;
-  font-size: 26px;
+  font-size: 20px;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -79,14 +79,14 @@ header {
 }
 
 .footer-text {
-  font-size: 18px;
+  font-size: 12px;
   margin: 0;
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 600px) {
   .footer-icons {
-    gap: 26px;
+    gap: 30px;
   }
 
   .footer-icons a {
@@ -94,7 +94,7 @@ header {
   }
 
   .footer-text {
-    font-size: 18px;
+    font-size: 12px;
     padding: 0 10px;
   }
 }
