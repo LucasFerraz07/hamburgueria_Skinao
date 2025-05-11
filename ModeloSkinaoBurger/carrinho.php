@@ -65,9 +65,9 @@ $total = 0;
 <form action="finalizar_pedido.php" method="POST" class="form-finalizar">
     <h2>Dados para Entrega</h2>
     <input type="text" name="nome" placeholder="Seu nome" required>
-    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="text" name="telefone" placeholder="Telefone" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
     <input type="text" name="rua" placeholder="Rua" required>
-    <input type="text" name="numero" placeholder="Número" required>
+    <input type="text" name="numero" placeholder="Número" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
     <input type="text" name="bairro" placeholder="Bairro" required>
     <input type="text" name="complemento" placeholder="Complemento">
 
@@ -81,7 +81,7 @@ $total = 0;
         <?php endwhile; ?>
     </select>
 
-    <input type="text" name="cep" placeholder="CEP" required>
+    <input type="text" name="cep" placeholder="CEP" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
     <input type="hidden" name="total" value="<?= number_format($total, 2, ',', '.') ?>">
 
     <label for="forma_pagamento">Forma de Pagamento:</label>
@@ -100,7 +100,8 @@ $total = 0;
     <button type="submit">Finalizar Pedido</button>
 </form>
 
-
+<br><br><br><br>
 <?php include('includes/footer.php'); ?>
+<script src="assets/carrinho.js"></script>
 </body>
 </html>

@@ -49,7 +49,6 @@ if (isset($_GET['edit']) && isset($_GET['id'])) {
 }
 
 $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
-
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +115,7 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
     </div>
 <?php endif; ?>
 
-    <br><br><br>
+    <br><br><br><br>
     <?php include('includes/footerAdmin.php') ?>
 
     <script>

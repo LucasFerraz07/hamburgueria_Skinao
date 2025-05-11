@@ -73,7 +73,7 @@ $pagamentos = $mysqli->query("SELECT id, nome FROM forma_pagamento ORDER BY id D
             </tbody>
         </table>
     </div>
-
+<br><br><br>
     <?php include('includes/footerAdmin.php') ?>
 </body>
 </html>

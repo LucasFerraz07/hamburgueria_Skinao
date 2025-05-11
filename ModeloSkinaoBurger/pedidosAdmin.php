@@ -66,7 +66,7 @@ $result = $mysqli->query($sql);
         </div>
     <?php endwhile; ?>
 </main>
-
+<br><br><br>
 <?php include('includes/footerAdmin.php') ?>
 </body>
 </html>

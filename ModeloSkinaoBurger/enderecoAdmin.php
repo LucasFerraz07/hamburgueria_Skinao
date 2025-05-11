@@ -69,7 +69,7 @@ $result_cidades = $mysqli->query($sql_cidades);
         <p>Nenhuma cidade cadastrada ainda.</p>
     <?php endif; ?>
     </div>
-
+<br><br><br>
 
     <?php include('includes/footerAdmin.php') ?>
 </body>

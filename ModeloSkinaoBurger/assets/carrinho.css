@@ -13,6 +13,7 @@ body {
     background-color: #2c2c2c;
     border-radius: 16px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    overflow-x:auto;
 }
 
 .carrinho-container h1 {
@@ -120,3 +121,4 @@ body {
 .form-finalizar button:hover {
     background-color: #a41f1f;
 }
+
