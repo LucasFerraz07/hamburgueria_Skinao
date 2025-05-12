@@ -10,7 +10,7 @@ $nome = $_POST['nome'] ?? '';
 $telefone = $_POST['telefone'] ?? '';
 $rua = $_POST['rua'] ?? '';
 $numero = $_POST['numero'] ?? '';
-$bairro = $_POST['bairro'] ?? '';
+$bairro = intval($_POST['bairro'] ?? 0);
 $complemento = $_POST['complemento'] ?? '';
 $cidade = intval($_POST['cidade'] ?? 0);
 $cep = $_POST['cep'] ?? '';
@@ -25,7 +25,7 @@ if (!$nome || !$telefone || !$rua || !$numero || !$bairro || !$cidade || !$cep |
 }
 
 // Salva endereço
-$stmt = $mysqli->prepare("INSERT INTO esboco_hamburgueria.endereco (bairro, rua, numero, complemento, cep, cidade_id) VALUES ('$bairro', '$rua', '$numero', '$complemento', '$cep', '$cidade')");
+$stmt = $mysqli->prepare("INSERT INTO esboco_hamburgueria.endereco (rua, numero, complemento, cep, bairro_id) VALUES ('$rua', '$numero', '$complemento', '$cep', '$bairro')");
 $stmt->execute();
 $endereco_id = $stmt->insert_id;
 $stmt->close();

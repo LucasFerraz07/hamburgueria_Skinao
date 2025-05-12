@@ -66,22 +66,36 @@ $total = 0;
     <h2>Dados para Entrega</h2>
     <input type="text" name="nome" placeholder="Seu nome e Sobrenome" required>
     <input type="text" name="telefone" placeholder="Telefone" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-    <input type="text" name="rua" placeholder="Rua" required>
-    <input type="text" name="numero" placeholder="Número" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-    <input type="text" name="bairro" placeholder="Bairro" required>
-    <input type="text" name="complemento" placeholder="Complemento">
+    <input type="text" id="cep" name="cep" placeholder="CEP" required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
-     <label for="cidade">Cidade: </label>
-    <select name="cidade" required>
+    <select name="cidade" id="cidade" required>
         <?php
         $cities = $mysqli->query("SELECT id, nome FROM esboco_hamburgueria.cidade");
         while ($c = $cities->fetch_assoc()):
         ?>
-            <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['nome']) ?></option>
+            <option value="<?= $c['id'] ?>" data-nome="<?= htmlspecialchars($c['nome']) ?>">
+                <?= htmlspecialchars($c['nome']) ?>
+            </option>
         <?php endwhile; ?>
     </select>
 
-    <input type="text" name="cep" placeholder="CEP" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <select name="bairro" id="bairro" required>
+        <option value="" disabled selected>Selecione o bairro</option>
+        <?php
+        $bairros = $mysqli->query("SELECT id, nome FROM bairro ORDER BY nome");
+        while ($b = $bairros->fetch_assoc()):
+        ?>
+            <option value="<?= $b['id'] ?>" data-nome="<?= htmlspecialchars($b['nome']) ?>">
+                <?= htmlspecialchars($b['nome']) ?>
+            </option>
+        <?php endwhile; ?>
+    </select>
+
+    <input type="text" id="rua" name="rua" placeholder="Rua" required>
+
+    <input type="text" name="numero" placeholder="Número" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <input type="text" name="complemento" placeholder="Complemento">
+    
     <input type="hidden" name="total" value="<?= number_format($total, 2, ',', '.') ?>">
 
     <label for="forma_pagamento">Forma de Pagamento:</label>
@@ -103,5 +117,65 @@ $total = 0;
 <br><br><br><br>
 <?php include('includes/footer.php'); ?>
 <script src="assets/carrinho.js"></script>
+<script>
+document.getElementById('cep').addEventListener('blur', function () {
+    const cep = this.value.replace(/\D/g, '');
+
+    if (cep.length !== 8) return;
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                alert('CEP não encontrado!');
+                return;
+            }
+
+            // Rua (campo de texto)
+            document.getElementById('rua').value = data.logradouro;
+
+            // --- CIDADE (select) ---
+            const cidadeSelect = document.getElementById('cidade');
+            const cidadeViaCEP = data.localidade.trim().toLowerCase();
+            let cidadeEncontrada = false;
+
+            for (let option of cidadeSelect.options) {
+                const nomeOption = option.dataset.nome?.trim().toLowerCase();
+                if (nomeOption === cidadeViaCEP) {
+                    option.selected = true;
+                    cidadeEncontrada = true;
+                    break;
+                }
+            }
+
+            if (!cidadeEncontrada) {
+                alert('Cidade "' + data.localidade + '" não está cadastrada.');
+            }
+
+            // --- BAIRRO (select) ---
+            const bairroSelect = document.getElementById('bairro');
+            const bairroViaCEP = data.bairro.trim().toLowerCase();
+            let bairroEncontrado = false;
+
+            for (let option of bairroSelect.options) {
+                const nomeOption = option.dataset.nome?.trim().toLowerCase();
+                if (nomeOption === bairroViaCEP) {
+                    option.selected = true;
+                    bairroEncontrado = true;
+                    break;
+                }
+            }
+
+            if (!bairroEncontrado) {
+                alert('Bairro "' + data.bairro + '" não está cadastrado.');
+            }
+        })
+        .catch(() => {
+            alert('Erro ao buscar o CEP.');
+        });
+});
+</script>
+
+
 </body>
 </html>
