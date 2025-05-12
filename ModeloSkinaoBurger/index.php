@@ -122,7 +122,7 @@ if ($result && $result->num_rows > 0) {
                                     <input type="number" name="quantidade" value="1" min="1" required>
                                     <button type="button" class="botao-maior">+</button>
                                 </div>
-                                    <button class="botao-adicionar" type="submit">Adicionar 🛒</button>
+                                    <button class="botao-adicionar" type="submit">Adicionar</button>
                                 </div>
                             </form>
                         </div>

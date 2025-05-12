@@ -2,6 +2,21 @@
 include('config/conexao.php');
 include('config/protect.php');
 
+// Atualiza status se o formulário for enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pedido_id'], $_POST['status'])) {
+    $pedido_id = intval($_POST['pedido_id']);
+    $status = $_POST['status'];
+
+    $status_validos = ['nao_iniciado', 'em_preparo', 'entregue'];
+    if (in_array($status, $status_validos)) {
+        $stmt = $mysqli->prepare("UPDATE pedidos SET status = ? WHERE id = ?");
+        $stmt->bind_param("si", $status, $pedido_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+// Seleciona os pedidos
 $sql = "
     SELECT p.id AS pedido_id, p.nome, p.telefone, p.valor_total, p.data_pedido,
            p.status, p.observacao_pagamento, p.observacao_produto,
@@ -15,6 +30,7 @@ $sql = "
 ";
 $result = $mysqli->query($sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,6 +51,7 @@ $result = $mysqli->query($sql);
     <h1>Pedidos Realizados</h1>
 
     <?php while ($pedido = $result->fetch_assoc()): ?>
+        <?php if ($pedido['status'] === 'entregue') continue; ?>
         <div class="pedido-card">
             <h2>Pedido #<?= $pedido['pedido_id'] ?> - <?= date('d/m/Y H:i', strtotime($pedido['data_pedido'])) ?></h2>
             <p><strong>Cliente:</strong> <?= htmlspecialchars($pedido['nome']) ?> - <?= htmlspecialchars($pedido['telefone']) ?></p>
@@ -63,6 +80,15 @@ $result = $mysqli->query($sql);
             </ul>
 
             <p><strong>Total:</strong> R$ <?= number_format($pedido['valor_total'], 2, ',', '.') ?></p>
+
+            <form method="post" style="margin-top: 10px;">
+                <input type="hidden" name="pedido_id" value="<?= $pedido['pedido_id'] ?>">
+                <label><input type="radio" name="status" value="nao_iniciado" <?= $pedido['status'] === 'nao_iniciado' ? 'checked' : '' ?>> Não iniciado</label>
+                <label><input type="radio" name="status" value="em_preparo" <?= $pedido['status'] === 'em_preparo' ? 'checked' : '' ?>> Em preparo</label>
+                <label><input type="radio" name="status" value="entregue" <?= $pedido['status'] === 'entregue' ? 'checked' : '' ?>> Entregue</label>
+                <button type="submit" style="margin-left: 10px;">Atualizar Status</button>
+            </form>
+
         </div>
     <?php endwhile; ?>
 </main>
