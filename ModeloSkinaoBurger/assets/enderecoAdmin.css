@@ -25,8 +25,9 @@ body {
     color: #FFCA28;
 }
 
-/* Campo de texto */
-.container input[type="text"] {
+/* Campo de texto e número */
+.container input[type="text"],
+.container input[type="number"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #8D6E63;
@@ -36,6 +37,20 @@ body {
     color: #1C1C1C;
     margin-bottom: 20px;
     box-sizing: border-box;
+}
+
+/* Select de cidades */
+.container select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #8D6E63;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #EEEEEE;
+    color: #1C1C1C;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    appearance: none;
 }
 
 /* Botão */
@@ -57,6 +72,7 @@ body {
     color: #1C1C1C;
 }
 
+/* Lista de cidades/bairros */
 .lista-cidades {
     list-style: none;
     padding-left: 0;
@@ -85,7 +101,7 @@ body {
 }
 
 .form-excluir button {
-   background-color: #FF4747;
+    background-color: #FF4747;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -96,11 +112,9 @@ body {
 }
 
 .form-excluir button:hover {
-     background-color: #D63A3A;
+    background-color: #D63A3A;
     color: #f1f1f1;
 }
-
-
 
 /* Responsividade */
 @media (max-width: 600px) {

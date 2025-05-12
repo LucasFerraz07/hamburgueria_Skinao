@@ -18,15 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pedido_id'], $_POST['
 
 // Seleciona os pedidos
 $sql = "
-    SELECT p.id AS pedido_id, p.nome, p.telefone, p.valor_total, p.data_pedido,
-           p.status, p.observacao_pagamento, p.observacao_produto,
-           f.nome AS forma_pagamento,
-           e.rua, e.numero, e.bairro, c.nome AS cidade
-    FROM pedidos p
-    JOIN forma_pagamento f ON p.forma_pagamento_id = f.id
-    JOIN endereco e ON p.endereco_id = e.id
-    JOIN cidade c ON e.cidade_id = c.id
-    ORDER BY p.data_pedido ASC
+   SELECT p.id AS pedido_id, p.nome, p.telefone, p.valor_total, p.data_pedido,
+       p.status, p.observacao_pagamento, p.observacao_produto,
+       f.nome AS forma_pagamento,
+       e.rua, e.numero, b.nome AS bairro, c.nome AS cidade
+        FROM pedidos p
+        JOIN forma_pagamento f ON p.forma_pagamento_id = f.id
+        JOIN endereco e ON p.endereco_id = e.id
+        JOIN bairro b ON e.bairro_id = b.id
+        JOIN cidade c ON b.cidade_id = c.id
+        ORDER BY p.data_pedido ASC
+
 ";
 $result = $mysqli->query($sql);
 ?>

@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `bairro`
+--
+
+DROP TABLE IF EXISTS `bairro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bairro` (
+  `id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(80) NOT NULL,
+  `frete` decimal(10,2) NOT NULL,
+  `cidade_id` tinyint unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `nome_UNIQUE` (`nome`),
+  KEY `fk_bairro_cidade1_idx` (`cidade_id`),
+  CONSTRAINT `fk_bairro_cidade1` FOREIGN KEY (`cidade_id`) REFERENCES `cidade` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bairro`
+--
+
+LOCK TABLES `bairro` WRITE;
+/*!40000 ALTER TABLE `bairro` DISABLE KEYS */;
+INSERT INTO `bairro` VALUES (1,'Regina Célia',2.00,2),(2,'Centro',2.00,2),(3,'Distrito Industrial II',4.00,2),(4,'Itagaçaba',2.00,2),(5,'Jardim América',2.00,2),(6,'Jardim Europa',2.00,2),(7,'Jardim Imperial',3.00,2),(8,'Jardim Paraíso',2.00,2),(9,'Jardim Primavera',2.00,2),(10,'Jardim São José',2.00,2),(11,'Lagoa Dourada I',2.00,2),(12,'Lagoa Dourada II',2.00,2),(13,'Jardim Mavisou',9.00,3),(14,'Village',8.00,3);
+/*!40000 ALTER TABLE `bairro` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cidade`
 --
 
@@ -28,7 +58,7 @@ CREATE TABLE `cidade` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +67,7 @@ CREATE TABLE `cidade` (
 
 LOCK TABLES `cidade` WRITE;
 /*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
-INSERT INTO `cidade` VALUES (2,'Cruzeiro'),(3,'Lavrinhas');
+INSERT INTO `cidade` VALUES (2,'Cruzeiro'),(3,'Lavrinhas'),(4,'Pinheiros');
 /*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,16 +80,15 @@ DROP TABLE IF EXISTS `endereco`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `endereco` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `bairro` varchar(60) NOT NULL,
   `rua` varchar(60) NOT NULL,
   `numero` varchar(7) NOT NULL,
   `complemento` varchar(80) DEFAULT NULL,
   `cep` varchar(10) NOT NULL,
-  `cidade_id` tinyint unsigned NOT NULL,
+  `bairro_id` tinyint unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_endereco_cidade1_idx` (`cidade_id`),
-  CONSTRAINT `fk_endereco_cidade1` FOREIGN KEY (`cidade_id`) REFERENCES `cidade` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  KEY `fk_endereco_bairro1_idx` (`bairro_id`),
+  CONSTRAINT `fk_endereco_bairro1` FOREIGN KEY (`bairro_id`) REFERENCES `bairro` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +97,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,'Regina Célia','Rua José Gonçalves Ribeiro','294','','12732-564',2),(2,'Regina Célia','Rua José Gonçalves Ribeiro','294','','12732-564',2);
+INSERT INTO `endereco` VALUES (1,'Rua José Gonçalves Ribeiro','294','','12732-564',1),(2,'Rua José Gonçalves Ribeiro','294','','12732-564',1),(3,'Rua José Gonçalves Ribeiro','294','','12732-564',1);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +151,7 @@ CREATE TABLE `pedidos` (
   KEY `fk_pedidos_forma_pagamento1_idx` (`forma_pagamento_id`),
   CONSTRAINT `fk_pedidos_endereco1` FOREIGN KEY (`endereco_id`) REFERENCES `endereco` (`id`),
   CONSTRAINT `fk_pedidos_forma_pagamento1` FOREIGN KEY (`forma_pagamento_id`) REFERENCES `forma_pagamento` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +160,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,'2025-05-10 16:47:22','Lucas','12991015342',46.00,1,1,'nao_iniciado','Troco para 50','X-Salada sem tomate'),(2,'2025-05-10 17:29:59','Lorenzo','12991016792',44.00,2,4,'nao_iniciado','','');
+INSERT INTO `pedidos` VALUES (1,'2025-05-10 16:47:22','Lucas','12991015342',46.00,1,1,'entregue','Troco para 50','X-Salada sem tomate'),(2,'2025-05-10 17:29:59','Lorenzo','12991016792',44.00,2,4,'entregue','',''),(3,'2025-05-10 18:42:21','Gustavo','12991016792',5.50,3,1,'entregue','','');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +190,7 @@ CREATE TABLE `pedidos_has_produtos` (
 
 LOCK TABLES `pedidos_has_produtos` WRITE;
 /*!40000 ALTER TABLE `pedidos_has_produtos` DISABLE KEYS */;
-INSERT INTO `pedidos_has_produtos` VALUES (1,1,1,17.00),(1,2,1,18.00),(1,3,2,5.50),(2,1,1,17.00),(2,2,1,18.00),(2,4,1,9.00);
+INSERT INTO `pedidos_has_produtos` VALUES (1,1,1,17.00),(1,2,1,18.00),(1,3,2,5.50),(2,1,1,17.00),(2,2,1,18.00),(2,4,1,9.00),(3,3,1,5.50);
 /*!40000 ALTER TABLE `pedidos_has_produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-10 18:35:14
+-- Dump completed on 2025-05-12 18:36:59
