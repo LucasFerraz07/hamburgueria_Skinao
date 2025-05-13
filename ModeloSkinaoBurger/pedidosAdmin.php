@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pedido_id'], $_POST['
     $pedido_id = intval($_POST['pedido_id']);
     $status = $_POST['status'];
 
-    $status_validos = ['nao_iniciado', 'em_preparo', 'entregue'];
+    $status_validos = ['nao_iniciado', 'em_preparo', 'finalizado', 'entregue'];
     if (in_array($status, $status_validos)) {
         $stmt = $mysqli->prepare("UPDATE pedidos SET status = ? WHERE id = ?");
         $stmt->bind_param("si", $status, $pedido_id);
@@ -87,6 +87,7 @@ $result = $mysqli->query($sql);
                 <input type="hidden" name="pedido_id" value="<?= $pedido['pedido_id'] ?>">
                 <label><input type="radio" name="status" value="nao_iniciado" <?= $pedido['status'] === 'nao_iniciado' ? 'checked' : '' ?>> Não iniciado</label>
                 <label><input type="radio" name="status" value="em_preparo" <?= $pedido['status'] === 'em_preparo' ? 'checked' : '' ?>> Em preparo</label>
+                <label><input type="radio" name="status" value="finalizado" <?= $pedido['status'] === 'finalizado' ? 'checked' : '' ?>> Finalizado</label>
                 <label><input type="radio" name="status" value="entregue" <?= $pedido['status'] === 'entregue' ? 'checked' : '' ?>> Entregue</label>
                 <button type="submit" style="margin-left: 10px;">Atualizar Status</button>
             </form>

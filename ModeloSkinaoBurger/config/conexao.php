@@ -3,8 +3,8 @@
 $host = "localhost";
 $usuario = "root";
 //$senha = "&tec77@info!";
-//$senha = "root";
-$senha = "";
+$senha = "root";
+//$senha = "";
 $database = "esboco_hamburgueria";
 
 
