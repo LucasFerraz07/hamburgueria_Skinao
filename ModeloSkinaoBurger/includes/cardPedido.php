@@ -26,12 +26,14 @@
 
     <p><strong>Total:</strong> R$ <?= number_format($pedido['valor_total'], 2, ',', '.') ?></p>
 
-    <form method="post" style="margin-top: 10px;">
-        <input type="hidden" name="pedido_id" value="<?= $pedido['pedido_id'] ?>">
+   <form method="POST">
+    <input type="hidden" name="pedido_id" value="<?= $pedido['pedido_id'] ?>">
+    <div class="status-opcoes">
         <label><input type="radio" name="status" value="nao_iniciado" <?= $pedido['status'] === 'nao_iniciado' ? 'checked' : '' ?>> Não iniciado</label>
         <label><input type="radio" name="status" value="em_preparo" <?= $pedido['status'] === 'em_preparo' ? 'checked' : '' ?>> Em preparo</label>
         <label><input type="radio" name="status" value="finalizado" <?= $pedido['status'] === 'finalizado' ? 'checked' : '' ?>> Finalizado</label>
         <label><input type="radio" name="status" value="entregue" <?= $pedido['status'] === 'entregue' ? 'checked' : '' ?>> Entregue</label>
-        <button type="submit" style="margin-left: 10px;">Atualizar Status</button>
-    </form>
+    </div>
+    <button type="submit" class="btn-atualizar">Atualizar Status</button>
+</form>
 </div>

@@ -67,20 +67,20 @@ while ($pedido = $result->fetch_assoc()) {
 <?php include('includes/headerAdmin.php') ?>
 
 <main class="container-pedidos">
-    <h1>Pedidos Realizados</h1>
+    <h2>Pedidos Realizados</h2>
 
     <div class="colunas-container">
         <!-- Coluna 1: Não iniciado -->
         <div class="coluna">
-            <h2>📦 Não iniciado</h2>
+            <h3>📦 Não iniciado</h3>
             <?php foreach ($pedidos_nao_iniciado as $pedido): ?>
                 <?php include 'includes/cardPedido.php'; ?>
             <?php endforeach; ?>
         </div>
 
-        <!-- Coluna 2: Em preparo -->
+        <!-- Coluna 3: Em preparo -->
         <div class="coluna">
-            <h2>🍳 Em preparo</h2>
+            <h3>🍳 Em preparo</h3>
             <?php foreach ($pedidos_em_preparo as $pedido): ?>
                 <?php include 'includes/cardPedido.php'; ?>
             <?php endforeach; ?>
@@ -88,14 +88,14 @@ while ($pedido = $result->fetch_assoc()) {
 
         <!-- Coluna 3: Finalizado -->
         <div class="coluna">
-            <h2>✅ Finalizado</h2>
+            <h3>✅ Finalizado</h3>
             <?php foreach ($pedidos_finalizado as $pedido): ?>
                 <?php include 'includes/cardPedido.php'; ?>
             <?php endforeach; ?>
         </div>
     </div>
+    <br><br><br>
 </main>
-
 <?php include('includes/footerAdmin.php') ?>
 </body>
 </html>

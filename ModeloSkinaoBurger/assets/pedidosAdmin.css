@@ -1,16 +1,9 @@
 .container-pedidos {
+    max-height: fit-content;
     max-width: 1000px;
     margin: auto;
     padding: 20px;
-}
-
-.pedido-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 16px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    
 }
 
 .pedido-card h2 {
@@ -31,9 +24,9 @@
 .colunas-container {
     display: flex;
     gap: 20px;
-    height: 75vh;
-    padding: 20px 0;
     align-items: flex-start;
+    max-width: 1000px;             
+    box-sizing: border-box; 
 }
 
 /* Cada coluna de status */
@@ -49,7 +42,7 @@
 }
 
 /* Título da coluna */
-.coluna h2 {
+.coluna h3 {
     text-align: center;
     color: #C62828;
     margin-bottom: 15px;
@@ -66,7 +59,7 @@
 }
 
 /* Título do pedido */
-.pedido-card h2 {
+.pedido-card h3 {
     font-size: 1.1rem;
     margin-bottom: 5px;
 }
@@ -84,6 +77,44 @@
 /* Botão de atualizar */
 .pedido-card button {
     margin-top: 5px;
+}
+
+.status-opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.status-opcoes label {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Estilo opcional pro radio */
+.status-opcoes input[type="radio"] {
+    accent-color: #C62828; /* vermelho escuro do seu tema */
+    cursor: pointer;
+}
+
+/* Botão */
+.btn-atualizar {
+    padding: 6px 14px;
+    background-color: #C62828;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-atualizar:hover {
+    background-color: #b71c1c;
 }
 
 /* Responsividade */
