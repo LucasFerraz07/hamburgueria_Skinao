@@ -70,31 +70,15 @@ if ($result && $result->num_rows > 0) {
     <title>Skinão Burger</title>
 </head>
 <body>
+    <main>
     <?php include('includes/header.php'); ?>
 
     
     <section class="catalogo">
         
     <div class="topo">
-    <h1>Catálogo de Produtos</h1>
 
-    <a href="carrinho.php" class="carrinho" style="position: relative;">
-        <i class="fas fa-shopping-cart"></i>
-        <?php if ($quantidade_total > 0): ?>
-            <span style="
-                position: absolute;
-                top: -8px;
-                right: -10px;
-                background: red;
-                color: white;
-                font-size: 12px;
-                padding: 2px 6px;
-                border-radius: 50%;
-            ">
-                <?= $quantidade_total ?>
-            </span>
-        <?php endif; ?>
-    </a>
+    
 
 </div>
             <br>
@@ -138,6 +122,18 @@ if ($result && $result->num_rows > 0) {
     </section>
 
  <br><br><br>
+
+ <div class="botao-carrinho-fixo">
+    <a href="carrinho.php" class="carrinho-fixo">
+        <i class="fas fa-shopping-cart"></i>
+        Carrinho
+        <?php if ($quantidade_total > 0): ?>
+            <span class="contador-carrinho-fixo"><?= $quantidade_total ?></span>
+        <?php endif; ?>
+    </a>
+</div>
+</main>
+<br><br><br>
     <?php include('includes/footer.php'); ?>
 
     <script>

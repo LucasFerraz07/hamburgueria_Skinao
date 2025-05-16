@@ -122,3 +122,57 @@ body {
     background-color: #a41f1f;
 }
 
+/* Estilo do fundo escuro */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Estilo da caixinha do pop-up */
+.popup-content {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Botões */
+.popup-content button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #C62828;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-content button:hover {
+    background-color: #a61c1c;
+}
+
+/* Títulos e textos */
+.popup-content h2 {
+    margin-bottom: 15px;
+    color: #1C1C1C;
+}
+
+.popup-content p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+

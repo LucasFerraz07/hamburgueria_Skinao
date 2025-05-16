@@ -18,6 +18,11 @@ $forma_pagamento = intval($_POST['forma_pagamento'] ?? 0);
 $obs_pagamento = $_POST['observacao'] ?? '';
 $obs_pedido = $_POST['observacao_pedido'] ?? '';
 $total = str_replace(',', '.', $_POST['total'] ?? '0');
+$res_frete = $mysqli->query("SELECT frete FROM bairro WHERE id = $bairro");
+if ($f = $res_frete->fetch_assoc()) {
+    $frete = floatval($f['frete']);
+    $total += $frete;
+}
 
 // Validação simples
 if (!$nome || !$telefone || !$rua || !$numero || !$bairro || !$cidade || !$cep || !$forma_pagamento) {
