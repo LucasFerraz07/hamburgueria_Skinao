@@ -62,7 +62,7 @@ $total = 0;
     <?php endif; ?>
 </section>
 
-<form action="finalizar_pedido.php" method="POST" class="form-finalizar">
+<form action="resumo.php" method="POST" class="form-finalizar">
     <h2>Dados para Entrega</h2>
     <input type="text" name="nome" placeholder="Seu nome e Sobrenome" required>
     <input type="text" name="telefone" placeholder="Telefone" required required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
