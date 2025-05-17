@@ -119,6 +119,17 @@ $produtos = $mysqli->query("SELECT * FROM esboco_hamburgueria.produtos");
     <?php include('includes/footerAdmin.php') ?>
 
     <script>
+document.querySelectorAll('.btn-excluir').forEach(btn => {
+  btn.addEventListener('click', function(event) {
+    // Pergunta se o usuário confirma a exclusão
+    const confirmar = confirm('Tem certeza que deseja excluir este item?');
+    if (!confirmar) {
+      event.preventDefault(); // cancela o clique, não vai para o href
+    }
+  });
+});
+
+
     // Quando o modal estiver aberto, permitir fechar ao clicar no X
     document.querySelectorAll('.close').forEach(btn => {
         btn.onclick = () => {
