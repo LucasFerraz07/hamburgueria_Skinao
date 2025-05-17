@@ -1,0 +1,58 @@
+/* Acompanhamento de pedido */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    margin: 20px 0;
+}
+
+label {
+    font-size: 18px;
+    color: #666;
+}
+
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+    margin: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #C62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+.status-pedido {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.status-pedido h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.status-pedido p {
+    font-size: 16px;
+    color: #333;
+}

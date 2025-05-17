@@ -74,13 +74,13 @@ if ($result && $result->num_rows > 0) {
     <?php include('includes/header.php'); ?>
 
     
-    <section class="catalogo">
+    <section class="catalogo">       
+        <div class="topo">
+
+
         
-    <div class="topo">
+        </div>
 
-    
-
-</div>
             <br>
         <?php foreach ($produtos_por_tipo as $tipo): ?>
             <div class="tipo-produto">
@@ -169,5 +169,33 @@ if ($result && $result->num_rows > 0) {
     });
 </script>
 
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fuso horário de São Paulo
+        const agora = new Date();
+
+        // Converte horário atual para minutos desde 00:00
+        const horarioAtual = agora.getHours() * 60 + agora.getMinutes();
+
+        // Define horário de funcionamento em minutos desde 00:00
+        const horarioAbertura = 19 * 60 + 30; // 19:30
+        const horarioFechamento = 23 * 60 + 30; // 23:30
+
+        console.log("Horário atual:", agora.getHours() + ":" + agora.getMinutes());
+        console.log("Funcionamento entre:", horarioAbertura, "e", horarioFechamento);
+        console.log("Minutos atuais:", horarioAtual);
+
+        if (horarioAtual < horarioAbertura || horarioAtual >= horarioFechamento) {
+            // Fora do horário: desabilita botões
+            document.querySelectorAll('.botao-adicionar').forEach(botao => {
+                botao.disabled = true;
+                botao.style.opacity = 0.5;
+                botao.style.cursor = 'not-allowed';
+                botao.innerText = "Fora do horário";
+            });
+        }
+    });
+</script>
 </body>
 </html>

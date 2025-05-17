@@ -2,9 +2,9 @@
 
 $host = "localhost";
 $usuario = "root";
-$senha = "&tec77@info!";
+//$senha = "&tec77@info!";
 //$senha = "root";
-//$senha = "";
+$senha = "";
 $database = "esboco_hamburgueria";
 
 

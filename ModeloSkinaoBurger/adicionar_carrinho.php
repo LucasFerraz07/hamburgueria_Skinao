@@ -2,6 +2,16 @@
 session_start();
 //unset($_SESSION['carrinho']);
 
+date_default_timezone_set('America/Sao_Paulo');
+
+$horaAtual = date('H:i');
+$horaAbertura = '19:30';
+$horaFechamento = '23:30';
+
+if ($horaAtual < $horaAbertura || $horaAtual >= $horaFechamento) {
+    die("Não é possível adicionar produtos fora do horário de funcionamento (19:30 - 23:30).");
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';

@@ -163,12 +163,13 @@ input[type=number] {
 }
 
 .botao-carrinho-fixo {
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: sticky;
+    bottom: 10px;
     z-index: 999;
+    text-align: center;
+    margin-top: 20px;
 }
+
 
 .carrinho-fixo {
     display: inline-block;

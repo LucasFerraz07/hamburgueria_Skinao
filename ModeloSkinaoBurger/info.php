@@ -16,9 +16,9 @@
     <section class="informacoes-hamburgueria">
         <div class="container-info">
             <h2>Sobre: </h2>
-            <p><strong>Horário de funcionamento:</strong> Segunda a Domingo, das 17h às 23h</p>
-            <p><strong>Telefone para contato:</strong> (11) 99999-9999</p>
-            <p><strong>Endereço:</strong> Rua do Hambúrguer, 123 - Centro, São Paulo - SP</p>
+            <p><strong>Horário de funcionamento:</strong> Segunda a Domingo, das 19:30 às 23:30</p>
+            <p><strong>Telefone para contato:</strong> (12) 982184626</p>
+            <p><strong>Endereço:</strong>Rua Maria Antunes Gonçalves, Vila Bionde - Cruzeiro-SP</p>
         </div>
     </section>
 
