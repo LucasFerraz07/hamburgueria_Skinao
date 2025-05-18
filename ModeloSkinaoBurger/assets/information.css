@@ -46,3 +46,37 @@
     transform: translateY(-2px);
 }
 
+.tabela-bairros {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tabela-bairros h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tabela-bairros table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-bairros th, .tabela-bairros td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-bairros th {
+    background-color: #1C1C1C;
+    color: #fff;
+    font-weight: bold;
+}
+
+.tabela-bairros tbody tr:hover {
+    background-color: #f9f9f9;
+}
