@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
--- Host: localhost    Database: esboco_hamburgueria
+-- Host: 127.0.0.1    Database: esboco_hamburgueria
 -- ------------------------------------------------------
--- Server version	8.0.39
+-- Server version	8.0.40
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `bairro` (
 
 LOCK TABLES `bairro` WRITE;
 /*!40000 ALTER TABLE `bairro` DISABLE KEYS */;
-INSERT INTO `bairro` VALUES (1,'Vila Washington Beleza',2.00,1),(2,'CDHU',4.00,1),(3,'Centro',2.00,1),(4,'Distrito Industrial II',4.00,1),(5,'Itagaçaba',2.00,1),(6,'Jardim América',2.00,1),(7,'Jardim Europa',2.00,1),(8,'Jardim Imperial',3.00,1),(9,'Jardim Paraíso',2.00,1),(10,'Jardim Primavera',2.00,1),(11,'Jardim São José',2.00,1),(12,'Lagoa Dourada I',2.00,1),(13,'Lagoa Dourada II',2.00,1),(14,'Lavrinhas - Jardim Mavisou',7.00,2),(15,'Lavrinhas - Vila Campestre',5.00,2),(16,'Lavrinhas Centro',7.00,2),(17,'Loteamento Bela Vista',3.00,1),(18,'Metalúrgicos',3.00,1),(19,'Parque Dona Arminda Candida de Jesus',2.00,1),(20,'Parque Pimavera',2.00,1),(21,'Reserva do Vale',2.00,1),(22,'Residencial Metalúrgico',3.00,1),(23,'Residencial Santa Cecília',3.00,1),(24,'Retiro Da Mantiqueira',2.00,1),(25,'Retiro Da Mantiqueira I',2.00,1),(26,'Retiro Da Mantiqueira II',2.00,1),(27,'Vila Abgail',2.00,1),(28,'Vila Ana Rosa Novais',2.00,1),(29,'Vila Batista Parte Alta',2.00,1),(30,'Vila Batista Parte Baixa',2.00,1),(31,'Vila Bionde',2.00,1),(32,'Vila Brasil',2.00,1),(33,'Vila Canevari',2.00,1),(34,'Vila Celestina',2.00,1),(35,'Vila Esmeralda',2.00,1),(36,'Vila Expedicionários Cruzeirenses',2.00,1),(37,'Vila Grispim',2.00,1),(38,'Vila Juvenal',3.00,1),(39,'Vila Loyelo',2.00,1),(40,'Vila Maria',3.00,1),(41,'Vila Paulista',2.00,1),(42,'Vila Paulo Romeu',2.00,1),(43,'Vila Pontilhão',2.00,1),(44,'Vila Regina Célia',2.00,1),(45,'Vila Rica',2.00,1),(46,'Vila Romana',2.00,1),(47,'Vila Sueli',2.00,1),(48,'Vila Virgílio Antunes de Oliveira',2.00,1);
+INSERT INTO `bairro` VALUES (1,'Vila Washington Beleza',2.00,1),(2,'CDHU',4.00,1),(3,'Centro',2.00,1),(4,'Distrito Industrial II',4.00,1),(5,'Itagaçaba',2.00,1),(6,'Jardim América',2.00,1),(7,'Jardim Europa',2.00,1),(8,'Jardim Imperial',3.00,1),(9,'Jardim Paraíso',2.00,1),(10,'Jardim Primavera',2.00,1),(11,'Jardim São José',2.00,1),(12,'Lagoa Dourada I',2.00,1),(13,'Lagoa Dourada II',2.00,1),(14,'Lavrinhas - Jardim Mavisou',7.00,2),(17,'Loteamento Bela Vista',3.00,1),(18,'Metalúrgicos',3.00,1),(19,'Parque Dona Arminda Candida de Jesus',2.00,1),(20,'Parque Pimavera',2.00,1),(21,'Reserva do Vale',2.00,1),(22,'Residencial Metalúrgico',3.00,1),(23,'Residencial Santa Cecília',3.00,1),(24,'Retiro Da Mantiqueira',2.00,1),(25,'Retiro Da Mantiqueira I',2.00,1),(26,'Retiro Da Mantiqueira II',2.00,1),(27,'Vila Abgail',2.00,1),(28,'Vila Ana Rosa Novais',2.00,1),(29,'Vila Batista Parte Alta',2.00,1),(30,'Vila Batista Parte Baixa',2.00,1),(31,'Vila Bionde',2.00,1),(32,'Vila Brasil',2.00,1),(33,'Vila Canevari',2.00,1),(34,'Vila Celestina',2.00,1),(35,'Vila Esmeralda',2.00,1),(36,'Vila Expedicionários Cruzeirenses',2.00,1),(37,'Vila Grispim',2.00,1),(38,'Vila Juvenal',3.00,1),(39,'Vila Loyelo',2.00,1),(40,'Vila Maria',3.00,1),(41,'Vila Paulista',2.00,1),(42,'Vila Paulo Romeu',2.00,1),(43,'Vila Pontilhão',2.00,1),(44,'Vila Regina Célia',2.00,1),(45,'Vila Rica',2.00,1),(46,'Vila Romana',2.00,1),(47,'Vila Sueli',2.00,1),(48,'Vila Virgílio Antunes de Oliveira',2.00,1);
 /*!40000 ALTER TABLE `bairro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +245,6 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (3,'sal',8.00,'8','uploads/',1,1);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-17 19:15:31
+-- Dump completed on 2025-05-17 21:07:32
